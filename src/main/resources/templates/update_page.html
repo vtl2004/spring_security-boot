@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <title>Update user</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+</head>
+<body>
+
+<h4>update user</h4>
+<form action="/admin/user-update" method="post">
+
+    <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
+
+
+    <input type="hidden" name="id" th:value="${param.id}">
+    username <input th:type="text" th:name="username" th:value="${param.username}">
+    password<input th:type="text" th:name="password" th:value="${param.password}">
+    firstName<input th:type="text" th:name="firstName" th:value="${param.firstName}">
+    lastName<input th:type="text" th:name="lastName" th:value="${param.lastName}">
+
+
+    email<input th:type="text" th:name="email" th:value="${param.email}">
+
+    <p>
+        <th:block th:each="role : ${roles}">
+
+            <input type="checkbox"  name="role" th:value="${role.role}" th:text="${role.role}"/>
+
+        </th:block>
+    </p>
+    <p><input  type="submit" value="Update"></p>
+</form>
+<br>
+
+<a th:href="@{/logout}">Logout</a>
+</body>
+</html>
